@@ -1,0 +1,14 @@
+body{
+    text-align: center;
+    line-height: 10px;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+#shape{
+    width:200px;
+    height:200px;
+    background:red;
+    display: none;
+    position: relative;
+}

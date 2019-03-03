@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>Reactions Project</title>
+    <link rel="stylesheet" href="reaction.css">
+</head>
+<body>
+    <h1>Reaction Game</h1>
+    <p>Your Time: <span id="timeTaken"></span> </p>
+    <hr>
+    <div id="shape"></div>
+
+    <script type="text/javascript">
+        var shape = document.getElementById("shape");
+        var start = new Date().getTime();
+
+
+        shape.addEventListener("click",function(){
+            shape.style.display = "none";
+            var end = new Date().getTime();
+            var timeTaken = (end - start)/1000;
+            
+            document.getElementById("timeTaken").textContent = timeTaken + "s";
+            appearAfterDelay();
+            
+       })
+
+       function shapeAppear(){
+            var top = Math.random() * 400;
+            var left = Math.random() * 400;
+            var width = (Math.random() * 200) + 100;
+
+            if(Math.random() > 0.5){
+                shape.style.borderRadius = "50%";
+            }else{
+                shape.style.borderRadius = "0";
+            }
+            shape.style.backgroundColor = randomColor();
+            shape.style.width = width + "px";
+            shape.style.top = top + "px";
+            shape.style.left = left + "px";
+            shape.style.display = "block";
+            var start = new Date().getTime();
+
+       }
+       
+
+       function appearAfterDelay(){
+            setTimeout(shapeAppear, Math.random() * 2000);
+       }
+       appearAfterDelay();
+
+       function randomColor(){
+           var letters = '01234567890ABCDEF'.split('');
+           var color = "#";
+
+           for(var i = 0; i < 6; i++){
+               color += letters[Math.floor(Math.random()*16)];
+           }
+           return color;
+       }
+
+    </script>
+</body>
+</html>
